@@ -1,0 +1,46 @@
+# depslib dependency file v1.0
+1456771738 source:e:\programming\biblioteca\book.cpp
+	"book.h"
+	"lib.h"
+	<cstdlib>
+	<cstdio>
+
+1456771735 e:\programming\biblioteca\book.h
+	"time.h"
+	<cstdio>
+	<cstring>
+	<cstdlib>
+
+1456771637 e:\programming\biblioteca\time.h
+	<cstdio>
+	<ctime>
+	<windows.h>
+	<cstring>
+	<cstdlib>
+
+1456771248 e:\programming\biblioteca\lib.h
+	<cstring>
+
+1456770377 source:e:\programming\biblioteca\lib.cpp
+	"lib.h"
+
+1456770720 source:e:\programming\biblioteca\source.cpp
+	<cstdio>
+	<algorithm>
+	<cstring>
+	"user.h"
+	"book.h"
+	"lib.h"
+	"time.h"
+
+1456771752 e:\programming\biblioteca\user.h
+	<cstdio>
+	<cstring>
+
+1456771567 source:e:\programming\biblioteca\time.cpp
+	"time.h"
+
+1456771754 source:e:\programming\biblioteca\user.cpp
+	"user.h"
+	"lib.h"
+
