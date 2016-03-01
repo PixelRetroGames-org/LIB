@@ -35,7 +35,7 @@
 		<Unit filename="book.h" />
 		<Unit filename="lib.cpp" />
 		<Unit filename="lib.h" />
-		<Unit filename="source.cpp" />
+		<Unit filename="main.cpp" />
 		<Unit filename="time.cpp" />
 		<Unit filename="time.h" />
 		<Unit filename="user.cpp" />

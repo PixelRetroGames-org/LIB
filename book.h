@@ -26,10 +26,11 @@ class Book
  ~Book();
  void Set_id(int id);
  bool Is_borrowed();
- void Read_information();
+ void Read_information(FILE *input=NULL);
  void Update_information();
  void Print_information(FILE *where);
  void Clear();
+ char* Get_title();
 };
 
 #endif //BOOK_H

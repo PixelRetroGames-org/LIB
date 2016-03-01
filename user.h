@@ -2,6 +2,7 @@
 #define USER_H
 
 #include "lib.h"
+#include "book.h"
 #include<cstdio>
 #include<cstring>
 

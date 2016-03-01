@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
-1456817374 source:e:\programming\biblioteca\book.cpp
+1456833972 source:e:\programming\biblioteca\book.cpp
 	"book.h"
 	"lib.h"
 	<cstdlib>
 	<cstdio>
 	<algorithm>
 
-1456816941 e:\programming\biblioteca\book.h
+1456833967 e:\programming\biblioteca\book.h
 	"time.h"
 	<cstdio>
 	<cstring>
@@ -36,21 +36,23 @@
 	"lib.h"
 	"time.h"
 
-1456816949 e:\programming\biblioteca\user.h
+1456830078 e:\programming\biblioteca\user.h
 	"lib.h"
+	"book.h"
 	<cstdio>
 	<cstring>
 
 1456816241 source:e:\programming\biblioteca\time.cpp
 	"time.h"
 
-1456815747 source:e:\programming\biblioteca\user.cpp
+1456833845 source:e:\programming\biblioteca\user.cpp
 	"user.h"
 
-1456813888 source:e:\programming\biblioteca\main.cpp
+1456831709 source:e:\programming\biblioteca\main.cpp
 	<cstdio>
 	<algorithm>
 	<cstring>
+	<vector>
 	"user.h"
 	"book.h"
 

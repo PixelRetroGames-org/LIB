@@ -29,11 +29,19 @@ bool Book::Is_borrowed()
  return is_borrowed;
 }
 
-void Book::Read_information()
+void Book::Read_information(FILE *input)
 {
- char file[NAME_MAX_LENGHT];
- itoa(book_id,file);
- FILE *in=fopen(file,"r");
+ char path[NAME_MAX_LENGHT];
+ strcpy(path,"Books/");
+ FILE *in=input;
+ if(input==NULL)
+    {
+     char file[NAME_MAX_LENGHT];
+     itoa(book_id,file);
+     strcat(file,".book");
+     strcat(path,file);
+     in=fopen(path,"r");
+    }
  fgets(title,sizeof title,in);
  title[strlen(title)-1]=NULL;
  fgets(author_name,sizeof author_name,in);
@@ -44,17 +52,18 @@ void Book::Read_information()
  for(int i=0;i<std::min(number_of_times_it_was_borrowed,NUMBER_OF_LAST_BORROWERS);i++)
      fscanf(in,"%d ",&id_last_borrowers[i]);
  time_when_it_was_last_borrowed.Read_time(in);
- //Time_type now;
- //now.Get_time();
- //is_borrowed=(now-time_when_it_was_last_borrowed>one_month);
  fclose(in);
 }
 
 void Book::Update_information()
 {
+ char path[NAME_MAX_LENGHT];
+ strcpy(path,"Books/");
  char file[NAME_MAX_LENGHT];
  itoa(book_id,file);
- FILE *out=fopen(file,"w");
+ strcat(file,".book");
+ strcat(path,file);
+ FILE *out=fopen(path,"w");
  fputs(title,out);
  fputc('\n',out);
  fputs(author_name,out);
@@ -100,4 +109,9 @@ void Book::Clear()
  number_of_times_it_was_borrowed=book_id=year=0;
  memset(id_last_borrowers,0,sizeof id_last_borrowers);
  is_borrowed=false;
+}
+
+char* Book::Get_title()
+{
+ return (char*)title;
 }
