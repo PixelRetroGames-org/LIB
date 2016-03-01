@@ -1,5 +1,4 @@
 #include "user.h"
-#include "lib.h"
 
 User::User()
 {
@@ -50,7 +49,8 @@ void User::Read_information()
  gets(surname);
  gets(username);
  fscanf(in,"%d %d ",&number_of_borrowed_books_in_total,&number_of_borrowed_books_now);
-
+ for(int i=0;i<number_of_borrowed_books_in_total;i++)
+     fscanf(in,"%d ",&borrowed_books_ids[i]);
 }
 void Update_information();
 void Print_information(FILE *where);

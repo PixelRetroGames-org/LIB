@@ -5,8 +5,12 @@
 #include<cstdio>
 #include<cstring>
 #include<cstdlib>
+#include "lib.h"
 
-extern const int NAME_MAX_LENGHT=100,NUMBER_OF_LAST_BORROWERS=20;
+#ifndef NAME_MAX_LENGHT
+#define NAME_MAX_LENGHT 100
+#define NUMBER_OF_LAST_BORROWERS 20
+#endif // NAME_MAX_LENGHT
 
 class Book
 {

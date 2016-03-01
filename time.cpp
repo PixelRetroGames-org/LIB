@@ -1,6 +1,6 @@
 #include "time.h"
 
-const char *MM[]={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+const char *MM[12]={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 
 Time_type::Time_type()
 {

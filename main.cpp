@@ -4,8 +4,6 @@
 
 #include "user.h"
 #include "book.h"
-#include "lib.h"
-#include "time.h"
 
 int main()
 {

@@ -1,5 +1,10 @@
 #include "lib.h"
 
+/*const int NAME_MAX_LENGHT=100,NUMBER_OF_LAST_BORROWERS=20;
+const int _NAME_MAX_LENGHT=100,NUMBER_OF_BOORROWED_BOOKS_MAX=10;
+const char *MM[12]={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};*/
+
+
 void itoa(int n, char s[])
 {
  int i, sign;

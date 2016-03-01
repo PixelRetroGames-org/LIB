@@ -1,10 +1,14 @@
 #ifndef USER_H
 #define USER_H
 
+#include "lib.h"
 #include<cstdio>
 #include<cstring>
 
-extern const int _NAME_MAX_LENGHT=100,NUMBER_OF_BOORROWED_BOOKS_MAX=10;
+#ifndef _NAME_MAX_LENGHT
+#define _NAME_MAX_LENGHT 100
+#define NUMBER_OF_BOORROWED_BOOKS_MAX 10
+#endif // NAME_MAX_LENGHT
 
 class User
 {

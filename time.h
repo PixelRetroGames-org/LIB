@@ -6,8 +6,9 @@
 #include<windows.h>
 #include<cstring>
 #include<cstdlib>
+#include "lib.h"
 
-extern const char *MM[14];
+extern const char *MM[12];
 
 class Time_type
 {
