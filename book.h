@@ -25,11 +25,16 @@ class Book
  Book();
  ~Book();
  void Set_id(int id);
+ void Set_title(char *_title);
+ void Set_author_name(char *_author_name);
+ void Set_publisher_name(char *_publisher_name);
+ void Set_year(int _year);
  bool Is_borrowed();
  void Read_information(FILE *input=NULL);
  void Update_information();
  void Print_information(FILE *where);
  void Clear();
+ void Delete();
  char* Get_title();
 };
 

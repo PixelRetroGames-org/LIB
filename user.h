@@ -16,7 +16,7 @@ class User
  private:
  char name[_NAME_MAX_LENGHT],surname[_NAME_MAX_LENGHT],username[_NAME_MAX_LENGHT];
  int user_id;
- int number_of_borrowed_books_in_total,number_of_borrowed_books_now;
+ int number_of_borrowed_books_in_total=0,number_of_borrowed_books_now=0;
  int borrowed_books_ids[NUMBER_OF_BOORROWED_BOOKS_MAX];
  public:
  User();
@@ -25,9 +25,11 @@ class User
  void Set_name(char *_name);
  void Set_surname(char *_surname);
  void Set_username(char *_username);
+ char* Get_username();
  void Read_information();
  void Update_information();
  void Print_information(FILE *where);
+ void Delete();
 };
 
 #endif //USER_H

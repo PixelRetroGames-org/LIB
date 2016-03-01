@@ -1,10 +1,5 @@
 #include "lib.h"
 
-/*const int NAME_MAX_LENGHT=100,NUMBER_OF_LAST_BORROWERS=20;
-const int _NAME_MAX_LENGHT=100,NUMBER_OF_BOORROWED_BOOKS_MAX=10;
-const char *MM[12]={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};*/
-
-
 void itoa(int n, char s[])
 {
  int i, sign;
@@ -18,6 +13,14 @@ void itoa(int n, char s[])
      s[i++] = '-';
  s[i] = '\0';
  reverse(s);
+}
+
+void atoi(int n,char s[])
+{
+ n=0;
+ int x=strlen(s);
+ for(int i=0;i<x;i++)
+     n=n*10+(s[i]-'0');
 }
 
 void reverse(char s[])

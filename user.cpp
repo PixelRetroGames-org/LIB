@@ -40,6 +40,11 @@ void User::Set_username(char *_username)
  strcpy(username,_username);
 }
 
+char* User::Get_username()
+{
+ return (char*)username;
+}
+
 void User::Read_information()
 {
  char path[NAME_MAX_LENGHT];
@@ -64,7 +69,7 @@ void User::Read_information()
 void User::Update_information()
 {
  char path[NAME_MAX_LENGHT];
- strcpy(path,"Books/");
+ strcpy(path,"Users/");
  char file[_NAME_MAX_LENGHT];
  itoa(user_id,file);
  strcat(file,".user");
@@ -105,4 +110,15 @@ void User::Print_information(FILE *where)
       aux.Read_information();
       fprintf(where,"- %s\n",aux.Get_title());
      }
+}
+
+void User::Delete()
+{
+ char path[NAME_MAX_LENGHT];
+ strcpy(path,"Users/");
+ char file[_NAME_MAX_LENGHT];
+ itoa(user_id,file);
+ strcat(file,".user");
+ strcat(path,file);
+ remove(path);
 }

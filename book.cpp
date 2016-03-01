@@ -24,6 +24,26 @@ void Book::Set_id(int id)
  book_id=id;
 }
 
+void Book::Set_title(char* _title)
+{
+ strcpy(title,_title);
+}
+
+void Book::Set_author_name(char* _author_name)
+{
+ strcpy(author_name,_author_name);
+}
+
+void Book::Set_publisher_name(char* _publisher_name)
+{
+ strcpy(publisher_name,_publisher_name);
+}
+
+void Book::Set_year(int _year)
+{
+ year=_year;
+}
+
 bool Book::Is_borrowed()
 {
  return is_borrowed;
@@ -109,6 +129,17 @@ void Book::Clear()
  number_of_times_it_was_borrowed=book_id=year=0;
  memset(id_last_borrowers,0,sizeof id_last_borrowers);
  is_borrowed=false;
+}
+
+void Book::Delete()
+{
+ char path[NAME_MAX_LENGHT];
+ strcpy(path,"Books/");
+ char file[NAME_MAX_LENGHT];
+ itoa(book_id,file);
+ strcat(file,".book");
+ strcat(path,file);
+ remove(path);
 }
 
 char* Book::Get_title()
