@@ -3,7 +3,7 @@
 
 #include<cstring>
 
-void atoi(int n, char s[]);
+void atoi(int &n, char s[]);
 void itoa(int n, char s[]);
 void reverse(char s[]);
 

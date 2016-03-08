@@ -49,6 +49,29 @@ bool Book::Is_borrowed()
  return is_borrowed;
 }
 
+bool Book::Is_late()
+{
+ Time_type T=Get_time_when_it_was_last_borrowed(),T1;
+ T1.Get_time();
+ if(T1.year()-T.year()>1)
+    return true;
+ else
+    {
+     if(T1.year()==T.year()+1)
+        if(T.month()!=12 && T1.month()>1)
+           return true;
+     if(T1.month()-T.month()>1)
+        return true;
+     if(T1.month()-T.month()==1)
+        return false;
+     if(T.day()<=28 && T1.day()>T.day())
+        return true;
+     if(T.day()>28 && T1.day()>28)
+        return true;
+     return false;
+    }
+}
+
 void Book::Read_information(FILE *input)
 {
  char path[NAME_MAX_LENGHT];
@@ -99,6 +122,7 @@ void Book::Update_information()
 
 void Book::Print_information(FILE *where)
 {
+ fprintf(where,"ID: %d\n",book_id);
  fprintf(where,"Title: ");
  fputs(title,where);
  fputc('\n',where);
@@ -119,6 +143,16 @@ void Book::Print_information(FILE *where)
     }
  if(where!=stdout)
     fclose(where);
+}
+
+void Book::Borrow(int user_id)
+{
+ is_borrowed=true;
+ time_when_it_was_last_borrowed.Get_time();
+ number_of_times_it_was_borrowed++;
+ for(int i=std::min(number_of_times_it_was_borrowed,NUMBER_OF_LAST_BORROWERS);i>=1;i--)
+     id_last_borrowers[i]=id_last_borrowers[i-1];
+ id_last_borrowers[0]=user_id;
 }
 
 void Book::Clear()
@@ -145,4 +179,9 @@ void Book::Delete()
 char* Book::Get_title()
 {
  return (char*)title;
+}
+
+Time_type Book::Get_time_when_it_was_last_borrowed()
+{
+ return time_when_it_was_last_borrowed;
 }

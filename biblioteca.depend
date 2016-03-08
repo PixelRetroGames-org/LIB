@@ -1,19 +1,19 @@
 # depslib dependency file v1.0
-1456855230 source:e:\programming\biblioteca\book.cpp
+1457440452 source:e:\programming\biblioteca\book.cpp
 	"book.h"
 	"lib.h"
 	<cstdlib>
 	<cstdio>
 	<algorithm>
 
-1456855242 e:\programming\biblioteca\book.h
+1457356817 e:\programming\biblioteca\book.h
 	"time.h"
 	<cstdio>
 	<cstring>
 	<cstdlib>
 	"lib.h"
 
-1456816230 e:\programming\biblioteca\time.h
+1457356881 e:\programming\biblioteca\time.h
 	<cstdio>
 	<ctime>
 	<windows.h>
@@ -21,10 +21,10 @@
 	<cstdlib>
 	"lib.h"
 
-1456849945 e:\programming\biblioteca\lib.h
+1457439524 e:\programming\biblioteca\lib.h
 	<cstring>
 
-1456849562 source:e:\programming\biblioteca\lib.cpp
+1457439526 source:e:\programming\biblioteca\lib.cpp
 	"lib.h"
 
 1456770720 source:e:\programming\biblioteca\source.cpp
@@ -36,19 +36,19 @@
 	"lib.h"
 	"time.h"
 
-1456855258 e:\programming\biblioteca\user.h
+1457356993 e:\programming\biblioteca\user.h
 	"lib.h"
 	"book.h"
 	<cstdio>
 	<cstring>
 
-1456816241 source:e:\programming\biblioteca\time.cpp
+1457439743 source:e:\programming\biblioteca\time.cpp
 	"time.h"
 
-1456855289 source:e:\programming\biblioteca\user.cpp
+1457441060 source:e:\programming\biblioteca\user.cpp
 	"user.h"
 
-1456856167 source:e:\programming\biblioteca\main.cpp
+1457440043 source:e:\programming\biblioteca\main.cpp
 	<cstdio>
 	<algorithm>
 	<cstring>

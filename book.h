@@ -30,12 +30,15 @@ class Book
  void Set_publisher_name(char *_publisher_name);
  void Set_year(int _year);
  bool Is_borrowed();
+ bool Is_late();
  void Read_information(FILE *input=NULL);
  void Update_information();
  void Print_information(FILE *where);
+ void Borrow(int user_id);
  void Clear();
  void Delete();
  char* Get_title();
+ Time_type Get_time_when_it_was_last_borrowed();
 };
 
 #endif //BOOK_H

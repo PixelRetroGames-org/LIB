@@ -60,18 +60,23 @@ void Update_Books_ids()
 void Print_all_books()
 {
  Book aux;
+ printf("\n/*****************************************/\n\n");
  for(int i=0;i<number_of_books;i++)
      {
       aux.Set_id(book_ids[i]);
       aux.Read_information();
       aux.Print_information(stdout);
+      printf("\n/*****************************************/\n\n");
      }
 }
 
 void New_book()
 {
  book_ids.resize(number_of_books+1);
- book_ids[number_of_books]=book_ids[number_of_books-1]+1;
+ if(number_of_books==0)
+    book_ids[number_of_books]=1;
+ else
+    book_ids[number_of_books]=book_ids[number_of_books-1]+1;
  number_of_books++;
  char s[NAME_MAX_LENGHT];
  Book a;
@@ -139,11 +144,13 @@ void Update_Users_ids()
 void Print_all_users()
 {
  User aux;
+ printf("\n/*****************************************/\n\n");
  for(int i=0;i<number_of_users;i++)
      {
       aux.Set_id(user_ids[i]);
       aux.Read_information();
       aux.Print_information(stdout);
+      printf("\n/*****************************************/\n\n");
      }
 }
 
@@ -151,7 +158,10 @@ void New_user()
 {
  //int X=user_ids[number_of_users-1]+1;
  user_ids.resize(number_of_users+1);
- user_ids[number_of_users]=user_ids[number_of_users-1]+1;
+ if(number_of_users==0)
+    user_ids[number_of_users]=1;
+ else
+    user_ids[number_of_users]=user_ids[number_of_users-1]+1;
  number_of_users++;
  char s[NAME_MAX_LENGHT];
  User a;
@@ -167,6 +177,31 @@ void New_user()
  a.Set_id(user_ids[number_of_users-1]);
  a.Update_information();
  Update_Users_ids();
+}
+
+///Borrow
+
+void Borrow(int _user_id,int _book_id)
+{
+ User user;
+ user.Set_id(_user_id);
+ user.Read_information();
+ Book book;
+ book.Set_id(_book_id);
+ book.Read_information();
+ if(book.Is_borrowed())
+    {
+     printf("This book is already borrowed!\n\n");
+     return;
+    }
+ if(user.Is_late())
+    {
+     printf("This user should return the books he borrowed!\n\n");
+     return;
+    }
+ user.Borrow(_book_id);
+ user.Update_information();
+ book.Update_information();
 }
 
 ///COMMAND ANALIZER
@@ -234,11 +269,13 @@ bool Run_command(char *command)
                        if(parameter[0]!='-' && isdigit(parameter[0]))
                           {
                            int id;
+                           printf("\n/*****************************************/\n\n");
                            atoi(id,parameter);
                            User aux;
                            aux.Set_id(id);
                            aux.Read_information();
                            aux.Print_information(stdout);
+                           printf("\n/*****************************************/\n\n");
                           }
                        else
                           if(parameter[0]!='-')
@@ -283,18 +320,20 @@ bool Run_command(char *command)
                           if(parameter[0]!='-' && isdigit(parameter[0]))
                              {
                               int id;
+                              printf("\n/*****************************************/\n\n");
                               atoi(id,parameter);
                               Book aux;
                               aux.Set_id(id);
                               aux.Read_information();
                               aux.Print_information(stdout);
+                              printf("\n/*****************************************/\n\n");
                              }
                           else
                              if(parameter[0]!='-')
                                 {
                                  int poz=Search_book_title(parameter);
                                  if(poz==-1)
-                                    printf("The book title is not in the database!\n");
+                                    printf("The book title is not in the database!\n\n");
                                  else
                                     {
                                      int id=book_ids[poz];
@@ -305,14 +344,14 @@ bool Run_command(char *command)
                                     }
                                 }
                              else
-                                printf("Unknown parameter!\n");
+                                printf("Unknown parameter!\n\n");
                          }
                       while(command[i]==' ')
                             i++;
                      }
               }
            else
-              printf("Unknown subcommand! Try %cprint user%c or %cprint book%c\n",QUOTE,QUOTE,QUOTE,QUOTE);
+              printf("Unknown subcommand! Try %cprint user%c or %cprint book%c\n\n",QUOTE,QUOTE,QUOTE,QUOTE);
        }
     else
        if(strcmp(main_command,"delete")==0)
@@ -356,18 +395,24 @@ bool Run_command(char *command)
                               int id;
                               atoi(id,parameter);
                               User aux;
+                              int sq;
+                              for(sq=0;sq<number_of_users;sq++)
+                                  {
+                                   user_ids[sq]==id;
+                                   break;
+                                  }
+                              for(;sq<number_of_users-1;sq++)
+                                  user_ids[sq]=user_ids[sq+1];
+                              number_of_users--;
                               aux.Set_id(id);
                               aux.Delete();
-                              for(int sq=id;sq<number_of_users-1;sq++)
-                                  user_ids[sq]=user_ids[sq+1]-1;
-                              number_of_users--;
                              }
                           else
                              if(parameter[0]!='-')
                                 {
                                  int poz=Search_user_name(parameter);
                                  if(poz==-1)
-                                    printf("The username is not in the database!\n");
+                                    printf("The username is not in the database!\n\n");
                                  else
                                     {
                                      int id=user_ids[poz];
@@ -380,7 +425,7 @@ bool Run_command(char *command)
                                     }
                                 }
                              else
-                                printf("Unknown parameter!\n");
+                                printf("Unknown parameter!\n\n");
                          }
                       while(command[i]==' ')
                             i++;
@@ -428,7 +473,7 @@ bool Run_command(char *command)
                                    {
                                     int poz=Search_book_title(parameter);
                                     if(poz==-1)
-                                       printf("The book title is not in the database!\n");
+                                       printf("The book title is not in the database!\n\n");
                                     else
                                        {
                                         int id=book_ids[poz];
@@ -441,19 +486,64 @@ bool Run_command(char *command)
                                        }
                                    }
                                 else
-                                   printf("Unknown parameter!\n");
+                                   printf("Unknown parameter!\n\n");
                             }
                          while(command[i]==' ')
                                i++;
                         }
                  }
               else
-                 printf("Unknown subcommand! Try %cdelete user%c or %cdelete book%c\n",QUOTE,QUOTE,QUOTE,QUOTE);
+                 printf("Unknown subcommand! Try %cdelete user%c or %cdelete book%c\n\n",QUOTE,QUOTE,QUOTE,QUOTE);
           }
        else
           {
-           if(strcmp(command,"exit")==0 || strcmp(command,"quit")==0)
-              return true;
+           if(strcmp(main_command,"borrow")==0)
+              {
+               int _book_id,_user_id;
+               char sub_command[COMMAND_MAX_LENGHT];
+               int i3=0;
+               while(command[i]!=' ' && i<n)
+                     {
+                      sub_command[i3++]=tolower(command[i++]);
+                     }
+               sub_command[i3]=NULL;
+               while(command[i]==' ')
+                     i++;
+               User aux;
+               for(int i=0;i<number_of_users;i++)
+                   {
+                    aux.Set_id(user_ids[i]);
+                    aux.Read_information();
+                    if(strcmp(aux.Get_username(),sub_command)==0)
+                       {
+                        _user_id=user_ids[i];
+                        break;
+                       }
+                   }
+               if(_user_id==0)
+                  {
+                   printf("User is not in the database!\n\n");
+                   return false;
+                  }
+               i3=0;
+               while(command[i]!=' ' && i<n)
+                     {
+                      sub_command[i3++]=tolower(command[i++]);
+                     }
+               sub_command[i3]=NULL;
+               while(command[i]==' ')
+                     i++;
+               atoi(_book_id,sub_command);
+               Borrow(_user_id,_book_id);
+              }
+           else
+              {
+               if(strcmp(command,"clear")==0 || strcmp(command,"cls")==0)
+                  system("cls");
+               else
+                  if(strcmp(command,"exit")==0 || strcmp(command,"quit")==0)
+                     return true;
+              }
           }
  return false;
 }

@@ -5,12 +5,42 @@ const char *MM[12]={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct",
 Time_type::Time_type()
 {
  h=m=y=s=0;
- memset(month,0,sizeof month);
- memset(day,0,sizeof day);
+ memset(_month,0,sizeof _month);
+ memset(_day,0,sizeof _day);
 }
 
 Time_type::~Time_type()
 {
+}
+
+int Time_type::year()
+{
+ return y;
+}
+
+int Time_type::month()
+{
+ return mm;
+}
+
+int Time_type::day()
+{
+ return d;
+}
+
+int Time_type::hour()
+{
+ return h;
+}
+
+int Time_type::minutes()
+{
+ return m;
+}
+
+int Time_type::seconds()
+{
+ return s;
 }
 
 void Time_type::Get_time()
@@ -21,11 +51,11 @@ void Time_type::Get_time()
  timeinfo=localtime(&rawtime);
  strcpy(text,asctime(timeinfo));
  for(int i=0;i<=2;i++)
-     day[i]=text[i];
+     _day[i]=text[i];
  for(int i=4;i<=6;i++)
-     month[i-4]=text[i];
- for(int i=1;i<=12;i++)
-     if(strcmp(month,MM[i])==0)
+     _month[i-4]=text[i];
+ for(int i=0;i<12;i++)
+     if(strcmp(_month,MM[i])==0)
         mm=i;
  char X[5]={0,0,0,0,0};
  int i=8;

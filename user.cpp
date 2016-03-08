@@ -95,21 +95,49 @@ void User::Print_information(FILE *where)
  fprintf(where,"Number of borrowed books in total: %d\nNumber of borrowed books now: %d\n",number_of_borrowed_books_in_total,number_of_borrowed_books_now);
  fprintf(where,"Books borrowed now:\n");
  Book aux;
- for(int i=0;i<number_of_borrowed_books_now;i++)
+ Time_type T;
+ for(int i=number_of_borrowed_books_in_total-1;i>number_of_borrowed_books_in_total-number_of_borrowed_books_now;i--)
      {
       fprintf(where,"%d ",borrowed_books_ids[i]);
       aux.Set_id(borrowed_books_ids[i]);
       aux.Read_information();
-      fprintf(where,"- %s\n",aux.Get_title());
+      T=aux.Get_time_when_it_was_last_borrowed();
+      fprintf(where,"- %s - ",aux.Get_title());
+      T.Print_time(where);
      }
  fprintf(where,"Last borrowed books:\n");
- for(int i=number_of_borrowed_books_now;i<number_of_borrowed_books_in_total;i++)
+ for(int i=number_of_borrowed_books_in_total-number_of_borrowed_books_now;i>0;i--)
      {
       fprintf(where,"%d ",borrowed_books_ids[i]);
       aux.Set_id(borrowed_books_ids[i]);
       aux.Read_information();
       fprintf(where,"- %s\n",aux.Get_title());
      }
+}
+
+void User::Borrow(int book_id)
+{
+ borrowed_books_ids[number_of_borrowed_books_in_total++]=book_id;
+ number_of_borrowed_books_now++;
+ Book aux;
+ aux.Set_id(book_id);
+ aux.Read_information();
+ aux.Borrow(user_id);
+}
+
+bool User::Is_late()
+{
+ Book aux;
+ Time_type T,T1;
+ T1.Get_time();
+ for(int i=0;i<number_of_borrowed_books_now;i++)
+     {
+      aux.Set_id(borrowed_books_ids[i]);
+      aux.Read_information();
+      if(aux.Is_late())
+         return true;
+     }
+ return false;
 }
 
 void User::Delete()

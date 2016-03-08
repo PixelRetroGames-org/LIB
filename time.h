@@ -14,11 +14,17 @@ class Time_type
 {
  private:
  int s,m,h,d,mm,y;
- char month[4],day[4];
+ char _month[4],_day[4];
  char text[20];
  public:
  Time_type();
  ~Time_type();
+ int year();
+ int month();
+ int day();
+ int hour();
+ int minutes();
+ int seconds();
  void Get_time();
  void Print_time(FILE *where);
  void Read_time(FILE *where);

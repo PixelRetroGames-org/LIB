@@ -28,6 +28,8 @@ class User
  char* Get_username();
  void Read_information();
  void Update_information();
+ void Borrow(int book_id);
+ bool Is_late();
  void Print_information(FILE *where);
  void Delete();
 };

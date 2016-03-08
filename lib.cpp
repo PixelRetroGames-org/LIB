@@ -15,12 +15,15 @@ void itoa(int n, char s[])
  reverse(s);
 }
 
-void atoi(int n,char s[])
+void atoi(int &n,char s[])
 {
  n=0;
  int x=strlen(s);
  for(int i=0;i<x;i++)
-     n=n*10+(s[i]-'0');
+     {
+      n=n*10;
+      n+=(int)(s[i]-'0');
+     }
 }
 
 void reverse(char s[])
